@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="assets/stylesheets/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+  <h1>People</h1>
+  <div id="peopleModule">
+    <input type="text">
+    <button class="myButton">Add People</button>
+  </div>
+  
+  <ul id="people">
+    <!-- <li>Michael Jackson</li>
+    <li>Michael Jordarn</li>
+    <li>Mick Jagger</li>
+    <li>Marilyn Monroe</li>
+    <li>Mickey Mouse</li>
+    <li>Michael Jackson</li>
+    <li>Michael Jordarn</li>
+    <li>Mick Jagger</li>
+    <li>Marilyn Monroe</li>
+    <li>Mickey Mouse</li> -->
+    <li>Bruce Willis</li>
+    
+    <script id="peopleTemplate" type="text/x-handlebars-template">
+    
+    {{#each this}}
+
+    
+      <li>{{ firstName }} <span class="del"> X </span></li>
+      
+     {{/each}}
+      
+    </script>
+    
+  </ul>
+  <script src="assets/javascript/all.min.js"></script>
+</body>
+</html>

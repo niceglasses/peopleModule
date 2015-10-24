@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif; }
+
+input {
+  font-size: 1.5em; }
+
+ul {
+  padding-left: 0;
+  list-style-type: none; }
+  ul li {
+    float: left;
+    padding: 10px 10px;
+    margin-right: 10px;
+    margin-top: 8px;
+    border-radius: 5px;
+    background: #47DA47;
+    text-align: center;
+    color: #3D3D3D;
+    font-weight: bold; }
+
+.myButton {
+  box-shadow: inset 0px 1px 0px 0px #caefab;
+  background-color: #77d42a;
+  border-radius: 6px;
+  border: 1px solid #268a16;
+  cursor: pointer;
+  color: #306108;
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 4px 26px;
+  text-shadow: 0px 1px 39px #aade7c; }
+  .myButton:hover {
+    background-color: #5cb811; }
+  .myButton:active {
+    position: relative;
+    top: 1px; }
+
+span {
+  background-color: red;
+  border-radius: 5em; }
