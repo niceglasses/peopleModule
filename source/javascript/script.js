@@ -1,23 +1,11 @@
 $(document).ready(function() {
   
-  
-  var people = [
-//     {
-//       firstName: 'Michael',
-//       lastName: 'Jackson'
-//     },
-//     {
-//       firstName: 'Mike',
-//       lastName: 'Monroe'
-//     }
-  ];
-  
+  var people = [];  
 
   // init
   var template = Handlebars.compile( $("#peopleTemplate").html() );
   var temp = template(people);
-  $('#people').append(temp);
-  
+  $('#people').append(temp);  
   
   // add people  
   $('.myButton').on('click', function() {
@@ -38,8 +26,7 @@ $(document).ready(function() {
     }    
   });
 
-  // delete people
-  
+  // delete people  
   $('#people').on('click', '.del', function(e) {
     console.log('hey');
     var $remove = $(e.target).closest('li');
