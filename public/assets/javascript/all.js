@@ -1,51 +1,77 @@
 $(document).ready(function() {
-  
-  
-  var people = [
-//     {
-//       firstName: 'Michael',
-//       lastName: 'Jackson'
-//     },
-//     {
-//       firstName: 'Mike',
-//       lastName: 'Monroe'
-//     }
-  ];
-  
 
-  // init
-  var template = Handlebars.compile( $("#peopleTemplate").html() );
-  var temp = template(people);
-  $('#people').append(temp);
+  var people = {
+    people: [],
+    init: function() {
+      this.cacheDOM();
+      this.render();
+      this.bindEvents();
+    },
+    cacheDOM: function() {
+      this.$pModule = $('#peopleModule');
+      this.$ul = this.$pModule.find('#people');
+      this.$template = this.$ul.find('#peopleTemplate').html();
+      temp = Handlebars.compile( this.$template );
+      this.$button = this.$pModule.find('.myButton');
+    },
+    render: function() {
+      this.$ul.append( temp(people) );
+      console.log(this.$button);
+    },
+    bindEvents: function() {
+      this.$button.on('click', this.addPerson.bind(this));
+      this.$ul.delegate('span.del', 'click', this.deletePerson.bind(this));
+    },
+    addPerson: function() {
+      this.people.push( this.$button.prev().val() );
+      this.$ul.children().remove(); // how to make work without this line?
+      this.render();
+      this.$button.prev().val('');
+    },
+    deletePerson: function(event) {
+      var $remove = $(event.target).closest('li');
+      this.people.splice($remove.index(), 1);
+      $remove.remove();      
+      console.log(this.people);
+    }
+
+  };
+
+  people.init();
+
+  // var people = [];  
+
+  // // init
+  // var template = Handlebars.compile( $("#peopleTemplate").html() );
+  // var temp = template(people);
+  // $('#people').append(temp);  
   
-  
-  // add people  
-  $('.myButton').on('click', function() {
-    var name = $(this).prev().val();
-    if (name) {
-      var newName = {
-        firstName: name.split(" ")[0],
-        lastName: name.split(" ")[1]
-      };
+  // // add people  
+  // $('.myButton').on('click', function() {
+  //   var name = $(this).prev().val();
+  //   if (name) {
+  //     var newName = {
+  //       firstName: name.split(" ")[0],
+  //       lastName: name.split(" ")[1]
+  //     };
     
-      people.push(newName);
+  //     people.push(newName);
     
-      var newPeople = [newName];
+  //     var newPeople = [newName];
    
-      $(this).prev().val('');
-      $('#people').append(template(newPeople));
-      console.log(people);
-    }    
-  });
+  //     $(this).prev().val('');
+  //     $('#people').append(template(newPeople));
+  //     console.log(people);
+  //   }    
+  // });
 
-  // delete people
-  
-  $('#people').on('click', '.del', function(e) {
-    console.log('hey');
-    var $remove = $(e.target).closest('li');
-    var i = $(this).find('ul').find('li').index($remove);
-    $remove.remove();
-    people.splice(i, 1);
-    console.log(people);
-  });
+  // // delete people  
+  // $('#people').on('click', '.del', function(e) {
+  //   console.log('hey');
+  //   var $remove = $(e.target).closest('li');
+  //   var i = $(this).find('ul').find('li').index($remove);
+  //   $remove.remove();
+  //   people.splice(i, 1);
+  //   console.log(people);
+  // });
 });
